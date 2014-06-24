@@ -4,56 +4,83 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="daily bundle of interesting nodeJS content. created and curated by the community">
+    <meta name="author" content="gpestana">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
     <title>NodeLog.in</title>
 
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/css/nodelogin.css" rel="stylesheet">
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
 
-    <div class="container">
-    
-      <div class="row">
-       <div class="col-md-2"></div>
-       <div class="col-md-6">
+   
+    <body>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1 site">
+				
+						<div class="site-title">
+							<h2><b>NodeLog.in</b></h2>
+						</div><! --/site top -->
+			
 
-          <div id="panel">
-            <div id="header">
-              <h2>Node Log.in</h2>
-            </div>  
-            <div id="nav">
-              <div class="row">
-               <div class="col-md-4"> << previous</div>
-               <div class="col-md-4"><p class="text-center">24 June 2014</p></div>
-               <div class="col-md-4"><p class="text-right">next >></p></div>
-              </div>
-            </div>
-            <div id="content">
-                <div id="entry">
-                </div>
+							{{#each entries}}
+							<div class="post">
+								<div class="row">
+              						<div class="col-md-2 contrib">
+              						<img class="contrib-pic" src="static/img/pic-mockup.jpeg"></img>
+              						<small>{{this.contrib}}</small>
+              						</div>
+              						<div class="col-md-10">
+									<h4>{{this.title}}</h4>
+									<small>{{this.site}}</small>
+									<p class="pull-right"><a href="{{this.link}}" <span class="glyphicon glyphicon-new-window"></span></span></a></p>
+									</div>
+						   		 </div>
+							</div>
+						    {{/each}}
 
-            </div>
-            <div id="newsletter">
-               newsletter
-            </div>
-            <div id="footer">
-              footer
-            </div>        
-            </div>        
-          </div>
 
-       </div>
-        <div class="col-md-4"></div>
-      </div>
-    
-    </div>
-    
+							<div class="post centered">
+								newletter
+							</div>
+							
+							<div class="site-footer">
+								<p><a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Submit</a>  </p>
+							</div>
+					
+				</div><!-- /col-md-6 -->
+			</div><! --/row -->
+		</div><! --/container -->
+		        
+
+        
+<!-- ****************************************************************************************************************************************
+FOOTER
+********************************************************************************************************************************************* -->        
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/nodelogin.js"></script>
+    
+    <!--BACKSTRETCH-->
+    <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
+    <script type="text/javascript" src="static/js/jquery.backstretch.min.js"></script>
+    <script>
+        //$.backstretch("static/img/bg01.jpg", {speed: 500});
+    </script>
+    
   </body>
 </html>

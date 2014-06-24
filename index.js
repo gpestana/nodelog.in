@@ -14,7 +14,11 @@ app.use('/static', express.static(__dirname + '/public'))
 
 
 app.get('/', function(req, res) {
-	res.locals = {'msg': 'msg'}
+	res.locals = {
+		'entries': [
+		{'title':'Is Node.js faster than Python ?', 'site': 'site1.com,', 'contrib': '@gpestana', 'link': '#'}, 
+		{'title':'How to deploy on Heroku like a boss', 'site': 'site2.com','contrib': '@gpestana', 'link': '#'}
+	]}
 	res.render('index')
 })
 
