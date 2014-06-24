@@ -1,0 +1,26 @@
+{
+  "name": "nodelogin",
+  "version": "0.0.1",
+  "description": "daily bundle of interesting nodeJS content. created and curated by the community",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node test/tap_all.js"
+  },
+  "keywords": [
+    "node",
+    "nodejs",
+    "community",
+    "content",
+    "documentation"
+  ],
+  "author": "gpestana",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~4.4.4",
+    "handlebars": "~2.0.0-alpha.4"
+  },
+  "devDependencies": {
+    "tape": "~2.13.3"
+  }
+}
