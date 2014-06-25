@@ -1,0 +1,17 @@
+to implement
+
+[dev]
+- twitter picture fetcher 
+server side. when content is added. the pic's link is storen in redis
+
+- newletter
+implement it from scratch and user server to send it ?
+use a newsletter service (like mailchimp) ?
+
+- cron-adding
+add pre-defined resources automatically
+
+[non dev]
+- rss
+- collaboration
+via github and twitter

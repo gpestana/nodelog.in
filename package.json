@@ -18,7 +18,8 @@
   "license": "BSD",
   "dependencies": {
     "express": "~4.4.4",
-    "handlebars": "~2.0.0-alpha.4"
+    "handlebars": "~2.0.0-alpha.4",
+    "redis": "~0.10.3"
   },
   "devDependencies": {
     "tape": "~2.13.3"
