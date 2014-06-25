@@ -6,8 +6,14 @@ client.on('error', function(err) {
 })
 
 function addEntry(date, obj, clbk) {
-	client.set(date, JSON.stringify(obj), function(err, msg) {
-		clbk(err, msg)
+	client.llen(date, function(err, len) {
+		if (len >= 5) {
+			clbk("DB: day "+date+" is full", null)
+		} else {
+			client.rpush(date, JSON.stringify(obj), function(err, msg) {
+				clbk(err, msg)
+			})
+		}
 	})
 }
 

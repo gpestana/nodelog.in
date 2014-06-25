@@ -53,11 +53,14 @@ var obj2 = {
 
 db.addEntry('12.02.114', obj1, dbPrint)
 db.addEntry('12.02.114', obj2, dbPrint)
-db.getEntry('12.02.114', dbPrint)
-db.getEntry('12.02.112', dbPrint)
 
+db.getEntry('12.02.114', function(err, res) {
+	res.forEach(function(obj) {
+		console.log(JSON.parse(obj).pic)
+	})
+})
 
 function dbPrint(err, msg) {
 	if(err) console.log(err)
-	else console.log(msg)
+	else console.log('-->'+ msg)
 }
