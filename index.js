@@ -2,7 +2,13 @@ var express	= require('express'),
 app		 	= express(),
 http 		= require('http').Server(app),
 hbs 		= require('hbs')
-db			= require('./server/db.js')
+db			= require('./server/db.js'),
+utils		= require('./libs/utils.js')
+
+//dev
+var populate = require('./libs/populate_dev.js')
+
+
 
 //handlebars config
 app.set('view engine', 'hbs')
@@ -41,26 +47,6 @@ http.listen(3000, function() {
 	console.log('listening on port 3000')
 })
 
-var obj1 = {
-	'link': 'www.google.com',
-	'pic': 'pic1'
-}
 
-var obj2 = {
-	'link': 'www.yahoo.com',
-	'pic': 'pic2'
-}
+//populate.populateDB()
 
-db.addEntry('12.02.114', obj1, dbPrint)
-db.addEntry('12.02.114', obj2, dbPrint)
-
-db.getEntry('12.02.114', function(err, res) {
-	res.forEach(function(obj) {
-		console.log(JSON.parse(obj).pic)
-	})
-})
-
-function dbPrint(err, msg) {
-	if(err) console.log(err)
-	else console.log('-->'+ msg)
-}
