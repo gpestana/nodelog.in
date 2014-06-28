@@ -11,6 +11,9 @@ use a newsletter service (like mailchimp) ?
 - cron-adding
 add pre-defined resources automatically
 
+- admin
+add, remove, manage days and entries panel for admin. login with twitter.
+
 [non dev]
 - rss
 - collaboration

@@ -8,30 +8,27 @@ function dbPrint(err, msg) {
 }
 
 
-//no callbacks needed. simple returns are ok
-function generateDateID(date) {
-	console.log(date)
-	return (date.getDate()+'.'+date.getMonth()+'.'+date.getYear())
+function generateDateID(date, clbk) {
+	var id = date.getYear()+'.'+parseInt(date.getMonth()+1)+'.'+date.getDate()
+    clbk(id)
 }
 
-function getNextDayID(current_day, clbk) {
-	console.log(current_day)
-
-	var next_day = new Date()
+function getNextDayID(currentDay, clbk) {
+	var nextDay = new Date()
+    nextDay.setDate(currentDay.getDate()+1)
 	
-	var nextDate = next_day.setDate(current_day.getDate()+1)
-
-	clbk(generateDateID(nextDate))
+    generateDateID(nextDay, clbk)
 }
 
-function getLastDayID(current_day, clbk) {
-	var last_day = new Date()
-	clb(generateDateID(last_day.setDate(current_day.getDate()-1)))
+function getLastDayID(currentDay, clbk) {
+	var lastDay = new Date()
+    lastDay.setDate(currentDay.getDate()-1)
+    
+    generateDateID(lastDay, clbk)
 }
-
 
 exports.getLastDayID = getLastDayID
 exports.getNextDayID = getNextDayID
 exports.dbPrint = dbPrint
-//exports.generatedateID = generatedateID
+exports.generateDateID = generateDateID
 
