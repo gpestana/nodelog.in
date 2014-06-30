@@ -24,9 +24,9 @@ var day3 = [
 		{'feat':'false' ,'url':'www.google5.com','colab':'pic5'}
 	]
 
-db.addEntry('114.01.12', day1, utils.dbPrint)
-db.addEntry('114.01.13', day2, utils.dbPrint)
-db.addEntry('114.01.14', day3, utils.dbPrint)
+db.addEntryToDay('114.1.12', day1, function() {})
+db.addEntryToDay('114.1.13', day2, function() {})
+db.addEntryToDay('114.1.14', day3, function() {})
 
 }
 

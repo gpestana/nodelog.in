@@ -1,1 +1,10 @@
-date IDs: yyy.mm.dd
+client and server exchange dateIDs. the server compute next and last day by converting the id to date first, compute it and then reconvert the date to id again. goal: pass strings via json and not javascript objects
+
+
+date IDs: yyy.m/mm.d/dd
+
+dayID: [
+    {'nr': 1..5, 'feat':bool, 'title': string, 'site': string, 'contrib': string, 'count': 0..},
+    {},
+    x5
+]

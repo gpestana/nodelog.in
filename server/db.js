@@ -17,11 +17,23 @@ function addEntryToDay(date, obj, clbk) {
 	})
 }
 
-function getEntriesFromDay(date, clbk) {
-	client.lrange(date, 0, -1, function(err, msg) {
+function getEntriesFromDay(id, clbk) {
+	client.lrange(id, 0, -1, function(err, msg) {
 		clbk(err, msg)
 	})
 }
 
+function deleteDay(date, clbk) {
+    client.del(date, function(err, msg) {
+        clbk(err, msg)
+    })
+}
+
+function killClient() {
+    client.quit()
+}
+
+exports.deleteDay = deleteDay
+exports.killClient = killClient
 exports.addEntryToDay = addEntryToDay
 exports.getEntriesFromDay = getEntriesFromDay
