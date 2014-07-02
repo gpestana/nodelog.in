@@ -13,8 +13,9 @@ function requestServer(action, id) {
 //inbound
 socket.on('server res', function(data) {
     //how to detect error ?
-    if (typeof data == string) console.log('error')    
+    if (typeof data == 'string') console.log('error')
     //if no error, 1) remove loading bar, 2) replace data
+    else console.log(data)    
 })
 
 

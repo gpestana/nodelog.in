@@ -33,31 +33,29 @@
 						<div class="site-title">
 							<h2><b>NodeLog.in</b></h2>
 						</div><! --/site top -->
-			
 
-							{{#each entries}}
-							<div class="post">
-								<div class="row">
-              						<div class="col-md-2 contrib">
-              						<img class="contrib-pic" src="static/img/pic-mockup.jpeg"></img>
-              						<small>{{this.contrib}}</small>
-              						</div>
-              						<div class="col-md-10">
-									<h4>{{this.title}}</h4>
-									<small>{{this.site}}</small>
-									<p class="pull-right"><a href="{{this.link}}" <span class="glyphicon glyphicon-new-window"></span></span></a></p>
-									</div>
-						   		 </div>
-							</div>
-						    {{/each}}
+                        <div class ="navigation">
+                        <span class="pull-left"><a href="#">last day</a></span>
+                        <span class="pull-right"><a href="#">next day</a></span>
+                        <h4 class="centered">today</h4>
+                        </div>
 
+                            <div class="post empty"></div>
+                            <div class="loading">
+                            <center><img  src="http://imgs.spoiltrottenbeads.co.uk/modules/ecommerce/basket/ajax-loader.gif"></img></center>
+                            <h4 class ="centered">fetching...</h4>
+                            </div>
+                            <div class="post empty"></div>
+                            <div class="post empty"></div>
+                            <div class="post empty"></div>
+                            <div class="post empty"></div>
 
 							<div class="post centered">
 								newletter
 							</div>
 							
 							<div class="site-footer">
-								<p><a href="#">Home</a> | <a href="#">Contact</a> | <a href="#">Submit</a>  </p>
+								<p><a href="#">home</a> | <a href="#">contact</a> | <a href="#">suggest</a> | <a href="#">contribute</a>  </p>
 							</div>
 					
 				</div><!-- /col-md-6 -->

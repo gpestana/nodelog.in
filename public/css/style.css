@@ -13,7 +13,8 @@
 /* OVERALL ASPECT */
 
 body {
-    background-color: #f2f2f2;
+    #background-color: #f2f2f2;
+    background-color: #D2D7BA;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -101,7 +102,7 @@ a:after {
 	background: white;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	box-shadow: 5px 5px 5px #2f2f2f;
+	//box-shadow: 1px 1px 1px #2f2f2f;
 }
 .site-title {
 	background: #46483E;
@@ -112,8 +113,13 @@ a:after {
 
 .site-title h2 {
 	font-weight: 400;
-	color: white;
+	color: #8CC84B;
 	#text-align: center;
+}
+
+.navigation {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .site-footer {
@@ -124,13 +130,17 @@ a:after {
 
 .post {
 	display: block;
-	padding-top:15px;
-	padding-bottom: 15px;
+	padding-top:10px;
+	padding-bottom: 10px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	border-bottom: 1px solid #ddd;
 }
 
+.post.empty {
+    height: 90px;
+    border-bottom: 0px;
+}
 
 .post .pull-right {
 	margin-top: -15px;
