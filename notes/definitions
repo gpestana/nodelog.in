@@ -4,7 +4,7 @@ client and server exchange dateIDs. the server compute next and last day by conv
 date IDs: yyy.m/mm.d/dd
 
 dayID: [
-    {'nr': 1..5, 'feat':bool, 'title': string, 'site': string, 'contrib': string, 'count': 0..},
+    {'feat':bool, 'title': string, 'site': string, 'contrib': string, 'count': 0..},
     {},
     x5
 ]

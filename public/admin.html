@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin panel</title>
+    <link href="static/css/bootstrap.css" rel="stylesheet">
+    <link href="static/css/admin.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Admin panel</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#server">server msgs</a></li>
+              <li><a href="#addDay">add day</a></li>
+            <li><a href="#removeDay">remove day</a></li>
+            <li><a href="#listDay">list day</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+
+<!-- msg panel -->
+<div id ="server"></div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Server msgs</h3>
+  </div>
+  <div id="serverPanel" class="panel-body"></div>
+</div>
+<br>
+<br>
+
+
+
+<div class="container">
+  <form class="form-horizontal" role="form">
+    <fieldset>
+      <legend id ="addDay">add day</legend>
+      
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Day ID</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="id" placeholder="114.11.11">
+        </div>
+      </div> 
+
+    <br><br>
+
+<!-- Entry #1 -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Title #1</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="title_1">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Url #1</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="url_1">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Featured #1</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-3">
+              <select class="form-control col-sm-2" id="feat_1">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Contributer #1</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="contrib_1" placeholder="twitter handler">
+        </div>
+      </div>
+    <hr>
+
+
+<!-- Entry #2 -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Title #2</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="title_2">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Url #2</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control"  id="url_2">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Featured #2</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-3">
+              <select class="form-control col-sm-2"  id="feat_2">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Contributer #2</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control"  id="contrib_2" placeholder="twitter handler">
+        </div>
+      </div>
+    <hr>
+
+<!-- Entry #3 -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Title #3</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="title_3">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Url #3</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="url_3">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Featured #3</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-3">
+              <select class="form-control col-sm-2" id="feat_3">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Contributer #3</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="contrib_3" placeholder="twitter handler">
+        </div>
+      </div>
+    <hr>
+
+
+<!-- Entry #4 -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Title #4</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="title_4">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Url #4</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="url_4">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Featured #4</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-3">
+              <select class="form-control col-sm-2" id="feat_4">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Contributer #4</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="contrib_4" placeholder="twitter handler">
+        </div>
+      </div>
+    <hr>
+
+
+<!-- Entry #5 -->
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Title #5</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="title_5">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Url #5</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="url_5">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Featured #5</label>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-xs-3">
+              <select class="form-control col-sm-2" id="feat_5">
+                <option value="false">false</option>
+                <option value="true">true</option>
+              </select>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Contributer #5</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="contrib_5" placeholder="twitter handler">
+        </div>
+      </div>
+
+<br>
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="button" class="btn btn-success" onclick="addDay()">add day</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+<br><br> 
+
+<div class="container">
+  <form class="form-horizontal" role="form">
+    <fieldset>
+      <legend id ="removeDay">remove day</legend>
+          
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Day ID</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="remove_id" placeholder="ex: 114.12.22">
+        </div>
+     </div>
+
+<br>    
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="button" class="btn btn-success" onclick="removeDay()">remove day</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+
+<br><br>
+
+<div class="container">
+  <form class="form-horizontal" role="form">
+    <fieldset>
+      <legend id ="listDay">list day</legend>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label" >Day ID</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="list_id" placeholder="ex: 114.12.22">
+        </div>
+     </div>
+
+<br>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="button" class="btn btn-success" onclick="listDay()">list day</button>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+
+        </div>
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.0.4.js"></script>
+    <script src="static/js/src.js"></script>
+    <script src ="static/js/admin.js"></script>
+  </body>
+</html>
+

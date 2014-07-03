@@ -5,12 +5,12 @@ client.on('error', function(err) {
 	console.log('db error: '+err)
 })
 
-function addEntryToDay(date, obj, clbk) {
-    client.llen(date, function(err, len) {
+function addEntryToDay(id, obj, clbk) {
+    client.llen(id, function(err, len) {
         if (len >= 5) {
-		    clbk("DB: day "+date+" is full", null)
+		    clbk("DB: day "+id+" is full", null)
 		} else {
-			client.rpush(date, JSON.stringify(obj), function(err, msg) {
+			client.rpush(id, JSON.stringify(obj), function(err, msg) {
 				clbk(err, msg)
 			})
 		}

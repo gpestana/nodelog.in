@@ -28,6 +28,9 @@ app.get('/about', function(req, res) {
     //res.render('about')
 })
 
+app.get('/admin', function(req, res) {
+    res.sendfile('public/admin.html')
+})
 
 //io
 io.on('connection', function(socket) {
@@ -60,6 +63,29 @@ io.on('connection', function(socket) {
             })
         })
     })
+
+
+
+    //admin
+    socket.on('admin add day', function(data) {
+        var id = data[0]
+        var entries = data[1]
+        db.addEntryToDay(id, entries, function(err, msg) {
+            socket.emit('admin server res', err, msg)
+        })
+    })
+    
+    socket.on('admin remove day', function(id) {
+        db.deleteDay(id, function(err, msg) {
+            socket.emit('admin server res', err, msg)
+        })
+    })    
+
+    socket.on('admin list day', function(id) {
+        db.getEntriesFromDay(id, function(err, msg) {
+            socket.emit('admin server res', err, msg)
+        })
+    })    
 
 })
 
