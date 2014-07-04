@@ -5,10 +5,10 @@ client.on('error', function(err) {
 	console.log('db error: '+err)
 })
 
-function addEntryToDay(id, obj, clbk) {
+function addDay(id, obj, clbk) {
     client.llen(id, function(err, len) {
-        if (len >= 5) {
-		    clbk("DB: day "+id+" is full", null)
+        if (len >= 1) {
+		    clbk("DB: day "+id+" already exists", null)
 		} else {
 			client.rpush(id, JSON.stringify(obj), function(err, msg) {
 				clbk(err, msg)
@@ -17,7 +17,7 @@ function addEntryToDay(id, obj, clbk) {
 	})
 }
 
-function getEntriesFromDay(id, clbk) {
+function getDay(id, clbk) {
 	client.lrange(id, 0, -1, function(err, msg) {
 		clbk(err, msg)
 	})
@@ -35,5 +35,5 @@ function killClient() {
 
 exports.deleteDay = deleteDay
 exports.killClient = killClient
-exports.addEntryToDay = addEntryToDay
-exports.getEntriesFromDay = getEntriesFromDay
+exports.addDay = addDay
+exports.getDay = getDay

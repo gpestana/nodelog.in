@@ -21,7 +21,9 @@
     "handlebars": "~2.0.0-alpha.4",
     "redis": "~0.10.3",
     "underscore": "~1.6.0",
-    "socket.io": "~1.0.6"
+    "socket.io": "~1.0.6",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0"
   },
   "devDependencies": {
     "tape": "~2.13.3"

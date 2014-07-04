@@ -10,11 +10,13 @@ auth        = require('./server/auth.js')
 
 //dev
 var populate = require('./libs/populate_dev.js')
+//populate.populateDB()
 
 //handlebars config
 app.set('view engine', 'hbs')
 app.set('views', __dirname + '/server/views')
 hbs.registerPartials(__dirname + '/server/views/partials')
+
 
 //static
 app.use('/static', express.static(__dirname + '/public'))
@@ -32,17 +34,19 @@ app.get('/admin', function(req, res) {
 })
 
 
-//auth
-app.post('/login',
-    auth.passport.authenticate('local', 
-    { successRedirect: '/admin',
-      failureRedirect: '/login'
-     })
+//twitter auth
+app.get('/auth/twitter', auth.passport.authenticate('twitter'))
+
+app.get('/auth/twitter/callback',
+    auth.passport.authenticate('twitter', {failureRedirect:'/login'},
+    function(req, res) {
+        res.redirect('/admin')
+    })
 )
 
 
 app.get('/login', function(req, res) {
-    res.sendfile('public/login.html')
+    res.send('wrong auth ?')
 })
 
 
