@@ -6,7 +6,7 @@ _           = require('underscore'),
 io          = require('socket.io').listen(http),
 db			= require('./server/db.js'),
 utils		= require('./libs/utils.js'),
-auth        = require('./server/auth.js')
+auth        = require('./server/auth.js').auth
 
 //dev
 var populate = require('./libs/populate_dev.js')
@@ -27,22 +27,8 @@ app.get('/about', function(req, res) {
     //res.render('about')
 })
 
-app.get('/admin', function(req, res) {
+app.get('/admin', auth, function(req, res) {
     res.sendfile('public/admin.html')
-})
-
-
-//auth
-app.post('/login',
-    auth.passport.authenticate('local', 
-    { successRedirect: '/admin',
-      failureRedirect: '/login'
-     })
-)
-
-
-app.get('/login', function(req, res) {
-    res.sendfile('public/login.html')
 })
 
 

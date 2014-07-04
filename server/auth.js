@@ -1,16 +1,18 @@
-var passport    = require('passport'),
-LocalStrategy   = require('passport-local').Strategy,
-privateData     = require('../private/credentials.js')
+var basicAuth   = require('basic-auth'),
+credentials     = require('../private/credentials.js')  
 
-passport.use(new LocalStrategy(function(username, password, done) {
-    console.log(username)
-    console.log(password)
-    if(username == privateData.username && password == privateData.password) {
-        return done(null, {user: 'admin'})
-    } else {
-        return done(null, false, {message: "incorrect login"})
+function auth(req, res, clbk) {
+    function unauthorized(res) {
+        res.set("WWW-Authenticate", "Basic realm: Authorization required")
+        return res.send(401)
     }
-}))
 
+    var user = basicAuth(req)
 
-exports.passport = passport
+    if(!user || !user.name || !user.pass) return unauthorized(res)
+    if (user.name == credentials.user
+        && user.pass == credentials.pass) return clbk()
+    else return unauthorized(res)
+}
+
+exports.auth = auth
