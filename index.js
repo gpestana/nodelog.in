@@ -38,7 +38,7 @@ io.on('connection', function(socket) {
     
     socket.on('get day', function(id) {
         console.log('client asked for day '+id)
-        db.getEntriesFromDay(id, function(err, data){
+        db.getDay(id, function(err, data){
             if(err) socket.emit('server res', '[err]: '+ err)
             else socket.emit('server res', data)
         })
@@ -47,7 +47,7 @@ io.on('connection', function(socket) {
     socket.on('get next day', function(id) {
         console.log('client asked for next day of '+id)
         utils.getNextDayID(id, function(nextDayID) {
-            db.getEntriesFromDay(nextDayID, function(err, data) {
+            db.getDay(nextDayID, function(err, data) {
                 if (err) socket.emit('server res', '[err]: '+err)
                 else socket.emit('server res', data)    
             })
@@ -57,7 +57,7 @@ io.on('connection', function(socket) {
     socket.on('get last day', function(id) {
         console.log('client asked for last day of '+id)
         utils.getLastDayID(id, function(lastDayID) {
-            db.getEntriesFromDay(lastDayID, function(err, data) {
+            db.getDay(lastDayID, function(err, data) {
                 if (err) socket.emit('server res', '[err]: '+err)
                 else socket.emit('server res', data)
             })
@@ -70,7 +70,7 @@ io.on('connection', function(socket) {
     socket.on('admin add day', function(data) {
         var id = data[0]
         var entries = data[1]
-        db.addEntryToDay(id, entries, function(err, msg) {
+        db.addDay(id, entries, function(err, msg) {
             socket.emit('admin server res', err, msg)
         })
     })
@@ -82,7 +82,7 @@ io.on('connection', function(socket) {
     })    
 
     socket.on('admin list day', function(id) {
-        db.getEntriesFromDay(id, function(err, msg) {
+        db.getDay(id, function(err, msg) {
             socket.emit('admin server res', err, msg)
         })
     })    

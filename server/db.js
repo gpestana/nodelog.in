@@ -19,7 +19,8 @@ function addDay(id, obj, clbk) {
 
 function getDay(id, clbk) {
 	client.lrange(id, 0, -1, function(err, msg) {
-		clbk(err, msg)
+        msg.push(id)
+        clbk(err, msg)
 	})
 }
 
