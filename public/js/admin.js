@@ -1,5 +1,5 @@
 //info about current's day ID
-document.getElementById("id").placeholder = "today's ID: "+getTodayID()
+document.getElementById("id").placeholder = "today's ID: "+getDayID(null)
 
 //buttons triggers
 function addDay() {
@@ -12,9 +12,11 @@ function addDay() {
         entryN.url = document.getElementById("url_"+i).value
         entryN.feat = document.getElementById("feat_"+i).value
         entryN.contrib = document.getElementById("contrib_"+i).value
+        entryN.contrib_pic = document.getElementById('contrib_pic_'+i).value
         entryN.count = 0
-        formData.push(entryN)
-    }
+        
+        formData.push(entryN) 
+        }
     
     if(!validateInput(formData) || id == '') {
         panelMsg('add day: input invalid', null)
@@ -33,6 +35,13 @@ function listDay() {
     console.log("list "+id)
    
     socket.emit('admin list day', id)
+}
+
+function getPicUrl() {
+    var handler = document.getElementById("handler").value
+    console.log('get url of '+ handler)
+
+    socket.emit('get contrib pic', handler)
 }
 
 
@@ -57,8 +66,15 @@ function panelMsg(err, msg) {
     var node = null
     var element = document.getElementById("serverPanel")
 
+    if(typeof err == 'string') { 
+        node = document.createTextNode(time+" - <ERROR> "+err)
+        element.appendChild(node)
+        element.appendChild(document.createElement("br"))
+        return
+    }
+
     //list object in appropriate way 
-    if(msg.length > 0) {
+    if(msg.length > 1) {
         var msgTemp = ''
         var data = JSON.parse(msg[0])
         for(var i = 0; i<data.length; i++) {
@@ -67,13 +83,8 @@ function panelMsg(err, msg) {
        } 
      msg = msgTemp
     }
-
- 
-    if(typeof err == 'string') {
-        node = document.createTextNode(time+" - <ERROR> "+err)
-    } else {
-        node = document.createTextNode(time+"- <OK> "+msg)
-    }
+    
+    node = document.createTextNode(time+"- <MSG> "+msg)
     element.appendChild(node)
     element.appendChild(document.createElement("br"))
 }

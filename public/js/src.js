@@ -1,7 +1,9 @@
 var socket = io()
 
+var LAUNCHING_DAY_ID = '114.7.5'
+
 //trigger
-requestServer('get day', getTodayID())
+requestServer('get day', getDayID(null))
 
 
 /*
@@ -20,9 +22,10 @@ function renderPanel(data) {
         title = dataObj[i].title
         feat = dataObj[i].feat
         contrib = dataObj[i].contrib
+        contrib_pic = dataObj[i].contrib_pic
         
         $('.post:nth-child('+parseInt(i+1)+')').replaceWith(function() {
-            return populatePost(url, title, feat, contrib)
+            return populatePost(url, title, feat, contrib, contrib_pic)
         })
 
     }
@@ -31,14 +34,17 @@ function renderPanel(data) {
 
 function renderEmptyPanel(msg) {
     console.log('day is empty')
+    $('.post').replaceWith('<div class="post empty"></div>')
     $('.post:nth-child(3)').replaceWith(function() {
         return '<div class="post empty"><center> Day has no content yet. Suggest some.</center> </div>'
     }) 
     updateNav(msg[0], false)
 }
 
-function populatePost(url, title, feat, contrib) {
-    return  '<div class="post"><div class="row"><div class="col-md-2 col-sm-2 col-xs-2  contrib"><img class="contrib-pic" src="https://cdn0.iconfinder.com/data/icons/basic-icon-set-2/200/12-64.png"></img><small>'+contrib+'</small></div><div class="col-md-10 col-sm-10 col-xs-10 entry"><h4>'+title+'</h4><small>'+url+'</small><p class="pull-right"><a href="'+url+'" <span class="glyphicon glyphicon-new-window"></span></a></p></div></div></div>'
+function populatePost(url, title, feat, contrib, contrib_pic) {
+    var short_url = url.split('/')[0]
+
+    return  '<div class="post"><div class="row"><div class="col-md-2 col-sm-2 col-xs-2  contrib"><img class="contrib-pic img-circle" src="'+contrib_pic+'"></img><center><a href="http://www.twitter.com/'+contrib+'"><small>@'+contrib+'</small></a><center></div><div class="col-md-10 col-sm-10 col-xs-10 entry"><a class="handler" href="http://'+url+'"><h4>'+title+'</h4></a><small>'+short_url+'</small><p class="pull-right"><a href="http://'+url+'" <span class="glyphicon glyphicon-new-window"></span></a></p></div></div></div>'
 
 }
 
@@ -59,7 +65,7 @@ function updateNav(id, showNext) {
         var nextDay = new Date(dateBuff.setDate(dateBuff.getDate()+1))
         next = monthNames[nextDay.getMonth()]+' '+nextDay.getDate()
     } 
-    if(id != 'id_when_launched') {
+    if(id != LAUNCHING_DAY_ID) {
         var  dateBuff = getDateFromID(id)
         var lastDay = new Date(dateBuff.setDate(dateBuff.getDate()-1))
         last = monthNames[lastDay.getMonth()]+' '+lastDay.getDate() 
@@ -72,16 +78,16 @@ function updateNav(id, showNext) {
 
     currentDayNode.text(current)
     
-    lastDayNode.text('< '+last)
-    lastDayNode.click(function(){
-        lastID = 'id!'
-        requestServer('get day', lastID)
+    lastDayNode.text(last)
+    lastDayNode.unbind('click') 
+    lastDayNode.bind('click', function() {
+        requestServer('get day', getDayID(lastDay))
     })
-    
-    nextDayNode.text(next+' >')
-    nextDayNode.click(function() {
-        nextID = 'id!!'
-        requestServer('get day', nextID)
+
+    nextDayNode.text(next)
+    nextDayNode.unbind()
+    nextDayNode.bind('click', function() {
+        requestServer('get day', getDayID(nextDay))
     })
 
 }
@@ -104,7 +110,6 @@ function requestServer(action, id) {
 
 //inbound
 socket.on('server res', function(data) {
-    console.log(data)
     //what to do in case of error from server ?
     if (typeof data == 'string') console.log('server res error')
     //if no error, 1) remove loading bar, 2) replace data
@@ -122,8 +127,10 @@ socket.on('server res', function(data) {
  *
  */
 
-function getTodayID() {
-    var date = new Date()
+function getDayID(date) {
+    if(date == null) {
+        date = new Date()
+    }
     return date.getYear()+'.'+parseInt(date.getMonth()+1)+'.'+date.getDate()
 }
 

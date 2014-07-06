@@ -6,6 +6,7 @@ _           = require('underscore'),
 io          = require('socket.io').listen(http),
 db			= require('./server/db.js'),
 utils		= require('./libs/utils.js'),
+twitter     = require('./libs/twitter.js')
 auth        = require('./server/auth.js').auth
 
 //dev
@@ -29,6 +30,10 @@ app.get('/about', function(req, res) {
 
 app.get('/admin', auth, function(req, res) {
     res.sendfile('public/admin.html')
+})
+
+app.get('/admin/:handler', auth,  function(req, res) {
+    var handler = req.params.handler
 })
 
 
@@ -87,6 +92,12 @@ io.on('connection', function(socket) {
         })
     })    
 
+    socket.on('get contrib pic', function(handler) {
+    var size = 'bigger'    
+    twitter.getContribPicture(handler, size, function(err, msg) {
+            socket.emit('admin server res', err, [msg])    
+        })    
+    })
 })
 
 

@@ -22,7 +22,8 @@
     "redis": "~0.10.3",
     "underscore": "~1.6.0",
     "socket.io": "~1.0.6",
-    "basic-auth": "0.0.1"
+    "basic-auth": "0.0.1",
+    "oauth": "~0.9.12"
   },
   "devDependencies": {
     "tape": "~2.13.3"
