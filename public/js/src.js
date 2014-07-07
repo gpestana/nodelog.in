@@ -1,5 +1,7 @@
 var socket = io()
 
+var nanobar = new Nanobar({bg: '#8CC94B',id: 'nanobar'})
+
 var LAUNCHING_DAY_ID = '114.7.5'
 
 //trigger
@@ -42,9 +44,7 @@ function renderEmptyPanel(msg) {
 }
 
 function populatePost(url, title, feat, contrib, contrib_pic) {
-    var short_url = url.split('/')[0]
-
-    return  '<div class="post"><div class="row"><div class="col-md-2 col-sm-2 col-xs-2  contrib"><img class="contrib-pic img-circle" src="'+contrib_pic+'"></img><center><a href="http://www.twitter.com/'+contrib+'"><small>@'+contrib+'</small></a><center></div><div class="col-md-10 col-sm-10 col-xs-10 entry"><a class="handler" href="http://'+url+'"><h4>'+title+'</h4></a><small>'+short_url+'</small><p class="pull-right"><a href="http://'+url+'" <span class="glyphicon glyphicon-new-window"></span></a></p></div></div></div>'
+    return  '<div class="post"><div class="row"><div class="col-md-2 col-sm-2 col-xs-2  contrib"><img class="contrib-pic img-circle" src="'+contrib_pic+'"></img><small><a href="http://www.twitter.com/'+contrib+'">@'+contrib+'</a></small></div><div class="col-md-10 col-sm-10 col-xs-10 entry"><h4>'+title+'</h4><small>'+url+'</small><p class="pull-right"><a href="'+url+'" <span class="glyphicon glyphicon-new-window"></span></a></p></div></div></div>'
 
 }
 
@@ -90,6 +90,7 @@ function updateNav(id, showNext) {
         requestServer('get day', getDayID(nextDay))
     })
 
+    nanobar.go(100)
 }
 
 
@@ -101,6 +102,7 @@ function updateNav(id, showNext) {
 
 //outbound
 function requestServer(action, id) {
+    nanobar.go(10)
     console.log('request to server...')
    //actions: 'get day', 'get next day', 'get last day' 
     socket.emit(action, id)
@@ -110,6 +112,7 @@ function requestServer(action, id) {
 
 //inbound
 socket.on('server res', function(data) {
+    nanobar.go(40)
     //what to do in case of error from server ?
     if (typeof data == 'string') console.log('server res error')
     //if no error, 1) remove loading bar, 2) replace data
@@ -141,4 +144,10 @@ function getDateFromID(id) {
     var day = parseInt(id[2])
     return new Date(year, month, day)
 }
+
+/*
+ * Nanobar
+ *
+ */
+
 
