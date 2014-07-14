@@ -25,16 +25,21 @@ app.get('/', function(req, res) {
 })
 
 app.get('/about', function(req, res) {
-    //res.render('about')
+    res.sendfile('public/about.html')
+})
+
+app.get('/contribute', function(req, res) {
+    res.sendfile('public/contribute.html')
+})
+
+app.get('/feedback', function(req, res) {
+    res.sendfile('public/feedback.html')
 })
 
 app.get('/admin', auth, function(req, res) {
     res.sendfile('public/admin.html')
 })
 
-app.get('/admin/:handler', auth,  function(req, res) {
-    var handler = req.params.handler
-})
 
 
 //io

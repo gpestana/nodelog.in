@@ -161,7 +161,9 @@ a:after {
 
 .post .glyphicon {
 	font-size: 30px;
-	color: #8CC84B
+	color: #8CC84B;
+    
+    padding-right: 30px;
 }
 
 .newsletter {
@@ -199,5 +201,10 @@ a small {
 }
 
 .entry {
-    padding-left:40px;
+    padding-left:60px;
+}
+
+
+.secondary-panel {
+    height: 540px;
 }
